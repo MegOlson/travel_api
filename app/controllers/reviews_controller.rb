@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
   def update
     @destination = Destination.find(params[:destination_id])
     @review = @destination.reviews.find(params[:id])
-    user_name = "Hugh Leffler" 
+    user_name = "Hugh Leffler"
     # This should correlate with current user of app
     author = params[:author]
     if author == user_name
@@ -47,9 +47,18 @@ class ReviewsController < ApplicationController
   def destroy
     @destination = Destination.find(params[:destination_id])
     @review = @destination.reviews.find(params[:id])
-    if @review.destroy!
-      render status: 200, json: {
-        message: "Your review has been deleted successfully!"
+    user_name = 'Daphne Kub'
+    # This should correlate with current user of app
+    author = params[:author]
+    if author == user_name
+      if @review.destroy!
+        render status: 200, json: {
+          message: "Your review has been deleted successfully!"
+        }
+      end
+    else
+      render status: 404, json: {
+        message: "You are not authorized to do this."
       }
     end
   end
