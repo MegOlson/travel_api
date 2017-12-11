@@ -5,6 +5,9 @@ class Seed
   end
 
   def generate_content
+    Destination.destroy_all
+    Review.destroy_all
+    
     20.times do |i|
       destination = Destination.create!(
         city: Faker::Address.city,
