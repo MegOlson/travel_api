@@ -7,12 +7,12 @@ class DestinationsController < ApplicationController
 
   def show
     @destination = Destination.find(params[:id])
-    json_response(@destination, :created)
+    json_response(@destination)
   end
 
   def create
     @destination = Destination.create!(destination_params)
-    json_response(@destination)
+    json_response(@destination, :created)
   end
 
   def update
