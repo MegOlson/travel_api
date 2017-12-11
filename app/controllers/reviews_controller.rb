@@ -28,9 +28,18 @@ class ReviewsController < ApplicationController
   def update
     @destination = Destination.find(params[:destination_id])
     @review = @destination.reviews.find(params[:id])
-    if @review.update!(review_params)
-      render status: 200, json: {
-        message: "Your review has been updated successfully!"
+    user_name = "Hugh Leffler" 
+    # This should correlate with current user of app
+    author = params[:author]
+    if author == user_name
+      if @review.update!(review_params)
+        render status: 200, json: {
+          message: "Your review has been updated successfully!"
+        }
+      end
+    else
+      render status: 404, json: {
+        message: "You are not authorized to do this."
       }
     end
   end
