@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-describe "post a quote route", :type => :request do
+describe "post a destination route", :type => :request do
 
   it "returns error response when fields are left blank" do
     post '/destinations', params: { city: "", country: ""}
@@ -23,5 +23,5 @@ describe "post a quote route", :type => :request do
   it "returns a created status" do
     expect(response).to have_http_status(:created)
   end
-  
+
 end
