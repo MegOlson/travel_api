@@ -1,0 +1,100 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/destinations": {
+      "post": {
+        "summary": "Creates a destination",
+        "tags": [
+          "Destinations"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "destination",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "city": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "city",
+                "country"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "destination created"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/destinations/{id}": {
+      "get": {
+        "summary": "Retrieves a destination",
+        "tags": [
+          "Destinations"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "destination found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "city",
+                "country"
+              ]
+            }
+          },
+          "404": {
+            "description": "destination not found"
+          },
+          "406": {
+            "description": "unsupported accept header"
+          }
+        }
+      }
+    }
+  }
+}
