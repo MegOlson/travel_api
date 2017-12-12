@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "put a destination route", :type => :request do
 
   before do
-
     @destination = FactoryBot.create(:destination)
     @destination.reload
   end

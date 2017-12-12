@@ -29,7 +29,7 @@ module Api
       def update
         @destination = Destination.find(params[:destination_id])
         @review = @destination.reviews.find(params[:id])
-        user_name = "Hugh Leffler"
+        user_name = @review.author
         # This should correlate with current user of app
         author = params[:author]
         if author == user_name
