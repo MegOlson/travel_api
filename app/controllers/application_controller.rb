@@ -1,4 +1,15 @@
 class ApplicationController < ActionController::API
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  http_basic_authenticate_with name: "dhh", password: "password", except: :index
+
+  def index
+    render plain: "Everyone can see me!"
+  end
+
+  def edit
+    render plain: "I'm only accessible if you know the super secret password."
+  end
+
   include Response
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
