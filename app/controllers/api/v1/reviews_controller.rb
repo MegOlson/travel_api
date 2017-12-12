@@ -48,7 +48,7 @@ module Api
       def destroy
         @destination = Destination.find(params[:destination_id])
         @review = @destination.reviews.find(params[:id])
-        user_name = 'Daphne Kub'
+        user_name = @review.author
         # This should correlate with current user of app
         author = params[:author]
         if author == user_name
