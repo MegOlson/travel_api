@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :destinations do
-    resources :reviews
+  namespace :api do
+    namespace :v1 do
+      resources :destinations do
+        resources :reviews
+      end
+    end
   end
 end
