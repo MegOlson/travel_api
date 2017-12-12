@@ -8,9 +8,10 @@ describe "put a destination route", :type => :request do
     @destination.reload
   end
 
-  # it "returns success response" do
-  #   put :update, {:id => @destination.id, :city => "New Test City"}
-  #   expect(response).to have_http_status(200)
-  # end
+  it "returns success response" do
+    put "/api/v1/destinations/#{@destination.id}", params: {:city => "New Test City"}, headers: {Authorization: 'Basic ZGhoOnBhc3N3b3Jk'}
+    binding.pry
+    expect(response).to have_http_status(200)
+  end
 
 end
