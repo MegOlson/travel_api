@@ -9,7 +9,7 @@ describe "delete a review route" do
 
   it "returns success code" do
     user_name = @review.author
-    delete "/api/v1/destinations/#{@destination.id}/reviews/#{@review.id}", params: {:author => user_name}, headers: {Authorization: 'Basic ZGhoOnBhc3N3b3Jk'}
+    delete "/api/v1/destinations/#{@destination.id}/reviews/#{@review.id}", params: {:author => user_name}, headers: {Authorization: ENV['TRAVEL_API_KEY']}
     expect(response).to have_http_status(200)
   end
 

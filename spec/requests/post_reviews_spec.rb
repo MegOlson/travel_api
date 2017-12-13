@@ -4,7 +4,7 @@ describe 'post a reviews route' do
   let!(:destination) { FactoryBot.create(:destination)}
 
   before do
-    post "/api/v1/destinations/#{destination.id}/reviews", params: { author: 'Test Author', content: "Test Content", rating: 2}, headers: {Authorization: 'Basic ZGhoOnBhc3N3b3Jk'}
+    post "/api/v1/destinations/#{destination.id}/reviews", params: { author: 'Test Author', content: "Test Content", rating: 2}, headers: {Authorization: ENV['TRAVEL_API_KEY']}
   end
 
   it 'returns the review rating' do

@@ -4,12 +4,12 @@ require 'rails_helper'
 describe "post a destination route", :type => :request do
 
   it "returns error response when fields are left blank" do
-    post '/api/v1/destinations', params: { city: "", country: ""}, headers: {Authorization: 'Basic ZGhoOnBhc3N3b3Jk'}
+    post '/api/v1/destinations', params: { city: "", country: ""}, headers: {Authorization: ENV['TRAVEL_API_KEY']}
     expect(response).to have_http_status(422)
   end
 
   before do
-    post '/api/v1/destinations', params: { :city => 'test_city', :country => "test_country" }, headers: {Authorization: 'Basic ZGhoOnBhc3N3b3Jk'}
+    post '/api/v1/destinations', params: { :city => 'test_city', :country => "test_country" }, headers: {Authorization: ENV['TRAVEL_API_KEY']}
   end
 
   it "returns the destination city" do

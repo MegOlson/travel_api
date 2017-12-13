@@ -3,7 +3,7 @@ module Api
     class DestinationsController < ApplicationController
       include Response
       def index
-        @destinations = Destination.all
+        @destinations = Destination.paginate(:page => params[:page], :per_page => 5)
         country = params[:country]
         if country
           @destinations = Destination.search(country)

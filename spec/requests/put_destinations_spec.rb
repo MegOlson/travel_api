@@ -8,7 +8,7 @@ describe "put a destination route", :type => :request do
   end
 
   it "returns success response" do
-    put "/api/v1/destinations/#{@destination.id}", params: {:city => "New Test City"}, headers: {Authorization: 'Basic ZGhoOnBhc3N3b3Jk'}
+    put "/api/v1/destinations/#{@destination.id}", params: {:city => "New Test City"}, headers: {Authorization: ENV['TRAVEL_API_KEY']}
     expect(response).to have_http_status(200)
   end
 
