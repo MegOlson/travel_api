@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :user do
+    name "MyString"
+    email "MyString"
+    password_digest "MyString"
+  end
   factory :destination do
     city Faker::Address.city
     country Faker::Address.country

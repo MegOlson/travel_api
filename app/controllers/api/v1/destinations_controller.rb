@@ -1,7 +1,7 @@
 module Api
   module V1
     class DestinationsController < ApplicationController
-
+      include Response
       def index
         @destinations = Destination.all
         country = params[:country]
